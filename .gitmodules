@@ -1,0 +1,18 @@
+[submodule "prompts/spaceship"]
+	path = prompts/spaceship
+	url = https://github.com/spaceship-prompt/spaceship-prompt.git
+[submodule "plugins/zsh-manydots-magic"]
+	path = plugins/zsh-manydots-magic
+	url = https://github.com/twang817/zsh-manydots-magic.git
+[submodule "plugins/fast-syntax-highlighting"]
+	path = plugins/fast-syntax-highlighting
+	url = https://git@github.com/zdharma-zmirror/fast-syntax-highlighting.git
+[submodule "plugins/zsh-autosuggestions"]
+	path = plugins/zsh-autosuggestions
+	url = https://git@github.com/zsh-users/zsh-autosuggestions.git
+[submodule "plugins/zsh-completions"]
+	path = plugins/zsh-completions
+	url = https://git@github.com/zsh-users/zsh-completions.git
+[submodule "plugins/zsh-history-substring-search"]
+	path = plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search

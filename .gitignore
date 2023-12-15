@@ -1,0 +1,8 @@
+zsh_history
+
+
+# Auto-generated completion files
+completions/_cargo
+completions/_hatch
+completions/_rustup
+
