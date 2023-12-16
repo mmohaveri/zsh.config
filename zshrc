@@ -132,8 +132,7 @@ alias system-upgrade="sudo nala update && sudo nala upgrade --no-update \$(apt-g
 # ls color
 alias ls='ls --color=auto'
 
-# neovim
-alias v='nvim .'
+
 
 # copy alias
 alias cft="xclip -selection clipboard"
@@ -152,6 +151,23 @@ alias vpn-status="expressvpn status"
 # ipython in virtualenv
 alias ipy="python -c 'import IPython;
 IPython.terminal.ipapp.launch_new_instance()'"
+
+# neovim alias with a default path.
+v() {
+     if [[ $# -gt 1 ]]; then
+        echo "Error: Too many arguments. You can only pass the name of a single file or directory."
+        return 1
+    fi
+
+
+    local path_to_open=$1
+
+    if [[ -z "$1" ]]; then
+        path_to_open="."
+    fi
+
+    nvim $path_to_open
+}
 
 # activate the lint virtual environment in hatch
 hatch-activate() {
