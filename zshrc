@@ -7,12 +7,12 @@ export EDITOR='nvim'
 export GOPATH="$HOME/go"
 
 # ====================== Path Additions ==================
-export PATH="$HOME/.local/bin:$PATH"  # Path where npx & pipx install their locally installed executables
-export PATH="/usr/local/nvim/bin:$PATH"  # neovim executable path
-export PATH="$HOME/.cargo/bin:$PATH"  # Rust executable path
-export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"  # Go executable paths 
+export PATH="$HOME/.local/bin:$PATH"                    # Path where npx & pipx install their locally installed executables
+export PATH="/usr/local/nvim/bin:$PATH"                 # neovim executable path
+export PATH="$HOME/.cargo/bin:$PATH"                    # Rust executable path
+export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"       # Go executable paths 
 export PATH="/usr/local/lua-language-server/bin:$PATH"  # lua-language-server executable path
-export PATH="/usr/local/ltex-ls/bin:$PATH"  # LTeX Language Server executable path
+export PATH="/usr/local/ltex-ls/bin:$PATH"              # LaTeX Language Server executable path
 
 # ====================== ZSH History Settings ==================
 export HISTFILE=$ZSH/zsh_history
@@ -28,62 +28,9 @@ setopt HIST_SAVE_NO_DUPS                # Don't write duplicate entries in the h
 setopt SHARE_HISTORY                    # Share history between all sessions.
 setopt HIST_IGNORE_SPACE                # Don't record an entry starting with a space.
 
-# ====================== Autocompletion Config =================
-fpath+=$ZSH_COMPLETIONS
-autoload -U compaudit compinit && compinit
-
-# Enable menu for auto completion (for completions with 2 options or more)
-zstyle ':completion:*' menu select
-# zstyle ':completion:*' menu select=long
-
-# Specify completer functions
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-
-# Set LS_COLORS environment variable using `dircolors` command
-eval "$(dircolors -b)"
-
-# Color auto complete output (syntax is '=pattern=format')
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:parameters'  list-colors '=*=31' # red
-zstyle ':completion:*:commands' list-colors '=*=1;32' # green
-zstyle ':completion:*:builtins' list-colors '=*=1;38;5;142'
-zstyle ':completion:*:aliases' list-colors '=*=2;38;5;128'
-zstyle ':completion:*:options' list-colors '=^(-- *)=34'
-
-# Color kill command's completions
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,cmd --sort=cmd'
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=32=31'
-
-# Add automatic description to completions without a description if possible
-zstyle ':completion:*' auto-description 'specify: %d'
-
-# Add description of the auto complete action if available
-zstyle ':completion:*' format 'Completing %d'
-
-# Group completions by tag if completion list contains more than a single tag.
-zstyle ':completion:*' group-name ''
-
-# Add prompt at the bottom of the page if completion results don't fit in a single page
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-
-# Add prompt at the bottom of the page while scrolling if completion results don't fit in a single page
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-
-# Prevent the use of compctl
-zstyle ':completion:*' use-compctl false
-
-# Have more verbose completions
-zstyle ':completion:*' verbose true
-
-setopt ALWAYS_TO_END                    # Always move the cursor to the end after a completion has been performed
-# setopt LIST_PACKED                    # Try to pack the completion list in fewer lines
-setopt AUTO_CD                          # `cd` into a directory if the command issued does not exist but a directory with the same name does.
-
 # ===================== Load Plugins ===========================
 plugins=(
+    "completion-setting"
     "zsh-completions"
     "fast-syntax-highlighting"
     "zsh-autosuggestions"
@@ -91,50 +38,16 @@ plugins=(
     "zsh-history-substring-search"
     "hatch"
     "rust"
+    "man-pages-color"
 )
 
 for plugin in "${plugins[@]}"; do
     source $ZSH_PLUGINS/$plugin/$plugin.plugin.zsh
 done
 
-
-# ====================== Key bindings ==========================
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-bindkey "^[OA" history-substring-search-up
-bindkey "^[OB" history-substring-search-down
-
-# ===================== colorful less (man pages)===============
-# More info on TERMCAP codes can be found from terminfo man page.
-export LESS="--RAW-CONTROL-CHARS"
-# Start blinking
-export LESS_TERMCAP_mb=$(tput bold; tput setaf 6) # cyan 
-# Start bold 
-export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
-# End bold, blinkding, standout, underline 
-export LESS_TERMCAP_me=$(tput sgr0)
-# Enter stand out mode
-export LESS_TERMCAP_so=$(tput bold; tput setaf 3) # yellow
-# End stand out mode
-export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-# Enter underline mode
-export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
-# Exit underline mode
-export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
-# Turn on reverse video mode
-export LESS_TERMCAP_mr=$(tput rev)
-# Turn on half‐bright
-export LESS_TERMCAP_mh=$(tput dim)
-# Enter subscript mode
-export LESS_TERMCAP_ZN=$(tput ssubm)
-# End subscript mode
-export LESS_TERMCAP_ZV=$(tput rsubm)
-# Enter superscript mode
-export LESS_TERMCAP_ZO=$(tput ssupm)
-# End superscript mode
-export LESS_TERMCAP_ZW=$(tput rsupm)
-# For Konsole and Gnome-terminal
-export GROFF_NO_SGR=1 
+# ===================== Load key bindings and aliases ==========
+source $ZSH/aliases.zsh
+source $ZSH/key-bindings.zsh
 
 # ===================== load prompt ============================
 SPACESHIP_PROMPT_ORDER=(
@@ -156,95 +69,6 @@ SPACESHIP_CHAR_PREFIX=""
 SPACESHIP_CHAR_SUFFIX=" "
 
 source $ZSH_PROMPTS/spaceship/spaceship.zsh
-
-# ===================== frequently used path aliases ===========
-export WORK="$HOME/Documents/Work"
-alias work="cd $WORK"
-alias note="cd $HOME/Documents/Notes"
-
-# ===================== frequently used command aliases ========
-# Upgrades system's packages while leaving the packages with alpha, beta, or rc upgrades left alone.
-alias system-upgrade="sudo nala update && sudo nala upgrade --no-update \$(apt-get --just-print dist-upgrade | grep 'Inst' | grep -E '\\(.*(alpha|a[0-9]|beta|b[0-9]|rc).*\\)' | cut -d' ' -f2 | xargs -I{} echo '--exclude {}')"
-
-# ls color
-alias ls='ls --color=auto'
-
-
-
-# copy alias
-alias cft="xclip -selection clipboard"
-
-# Fix copy buffer issue
-alias fix-copy="sudo sysctl vm.dirty_bytes=100000000"
-
-# open :)
-alias open="xdg-open"
-
-# ExpressVPN
-alias vpn-on="expressvpn connect"
-alias vpn-off="expressvpn disconnect"
-alias vpn-status="expressvpn status"
-
-# ipython in virtualenv
-alias ipy="python -c 'import IPython;
-IPython.terminal.ipapp.launch_new_instance()'"
-
-# neovim alias with a default path.
-v() {
-     if [[ $# -gt 1 ]]; then
-        echo "Error: Too many arguments. You can only pass the name of a single file or directory."
-        return 1
-    fi
-
-
-    local path_to_open=$1
-
-    if [[ -z "$1" ]]; then
-        path_to_open="."
-    fi
-
-    nvim $path_to_open
-}
-
-# activate the lint virtual environment in hatch
-hatch-activate() {
-    if [[ $# -gt 1 ]]; then
-        echo "Error: Too many arguments. You can only pass the name of a single hatch environment."
-        return 1
-    fi
-    
-    local hatch_env=$1
-
-    if [[ -z "$1" ]]; then
-        hatch_env="lint"
-    fi
-
-    local env_python_path
-    env_python_path=$(hatch env run -e $hatch_env which python3)
-
-    if [[ $? -ne 0 ]]; then
-        echo "Error: Failed to get python3 path for hatch environment '$hatch_env'."
-        return 1
-    fi
-
-    local env_activate_path=$(echo $env_python_path | sed "s/python3/activate/")
-
-    if [[ ! -e $env_activate_path ]]; then
-        echo "Error: Activation script '$env_activate_path' not found."
-        return 1
-    fi
-
-    source $env_activate_path
-}
-
-# git aliases
-alias ga='git add'
-alias gb='git branch'
-alias gc='git commit --verbose'
-alias gd='git diff'
-alias gst='git status'
-alias gco='git checkout'
-alias gcm='git chekcout main'
 
 # ===================== Python virtualenvs settings =============
 export WORKON_HOME=$HOME/.virtualenvs
