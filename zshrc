@@ -33,7 +33,7 @@ plugins=(
     "completion-setting"
     "zsh-completions"
     "fast-syntax-highlighting"
-    "zsh-autosuggestions"
+    "zsh-autosuggestions"               # This plugin can not be sourced more than once, so you won't be able to source .zshrc
     "zsh-manydots-magic"
     "zsh-history-substring-search"
     "hatch"
