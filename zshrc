@@ -1,4 +1,5 @@
-export ZSH=$HOME/.config/zsh
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
+export ZSH=$XDG_CONFIG_HOME/zsh
 export ZSH_PLUGINS=$ZSH/plugins
 export ZSH_PROMPTS=$ZSH/prompts
 export ZSH_COMPLETIONS=$ZSH/completions
@@ -10,7 +11,7 @@ export GOPATH="$HOME/go"
 export PATH="$HOME/.local/bin:$PATH"                    # Path where npx & pipx install their locally installed executables
 export PATH="/usr/local/nvim/bin:$PATH"                 # neovim executable path
 export PATH="$HOME/.cargo/bin:$PATH"                    # Rust executable path
-export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"       # Go executable paths 
+export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"       # Go executable paths
 export PATH="/usr/local/lua-language-server/bin:$PATH"  # lua-language-server executable path
 export PATH="/usr/local/ltex-ls/bin:$PATH"              # LaTeX Language Server executable path
 
