@@ -8,12 +8,21 @@ zstyle ':completion:*' menu select
 # Specify completer functions
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 
-# Set LS_COLORS environment variable using `dircolors` command
-eval "$(dircolors -b)"
+# Colorful completeions
+if [ `uname -s` = "Darwin" ]; then
+  # In MacOS
+  export CLICOLOR=1
+  zstyle ':completion:*:default' list-colors ''
+else
+  # In linux
+  # Set LS_COLORS environment variable using `dircolors` command
+  eval "$(dircolors -b)"
+  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+  alias ls='ls --color'
+fi
 
 # Color auto complete output (syntax is '=pattern=format')
 zstyle ':completion:*' list-colors ''
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:parameters'  list-colors '=*=31' # red
 zstyle ':completion:*:commands' list-colors '=*=1;32' # green
 zstyle ':completion:*:builtins' list-colors '=*=1;38;5;142'
@@ -50,4 +59,3 @@ zstyle ':completion:*' verbose true
 setopt ALWAYS_TO_END                    # Always move the cursor to the end after a completion has been performed
 # setopt LIST_PACKED                    # Try to pack the completion list in fewer lines
 setopt AUTO_CD                          # `cd` into a directory if the command issued does not exist but a directory with the same name does.
-
