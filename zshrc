@@ -77,9 +77,10 @@ source $ZSH_PROMPTS/spaceship/spaceship.zsh
 
 # ===================== Python virtualenvs settings =============
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-export VIRTUALENVWRAPPER_PYTHON=`which python3.11`
-source /usr/local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_LINK_PATH=`which virtualenvwrapper.sh`
+export VIRTUALENVWRAPPER_REAL_PATH=`readlink -f $VIRTUALENVWRAPPER_LINK_PATH`
+export VIRTUALENVWRAPPER_PYTHON="$(dirname $VIRTUALENVWRAPPER_REAL_PATH)/python"
+source virtualenvwrapper.sh
 
 # ===================== NVM settings ============================
 export NVM_DIR="$HOME/.nvm"
@@ -102,5 +103,3 @@ fi
 # ===================== kubectl settings ========================
 # alias k="kubectl"
 # export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-
