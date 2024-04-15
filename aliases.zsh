@@ -100,5 +100,4 @@ alias gc='git commit --verbose'
 alias gd='git diff'
 alias gst='git status'
 alias gco='git checkout'
-alias gcm='git chekcout main'
-
+alias gcm='git checkout main'
