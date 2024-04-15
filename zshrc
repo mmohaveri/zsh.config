@@ -7,6 +7,9 @@ export LANG=en_US.UTF-8
 export EDITOR='nvim'
 export GOPATH="$HOME/go"
 
+export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
+export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
+
 # ====================== Path Additions ==================
 export PATH="$HOME/.local/bin:$PATH"                    # Path where npx & pipx install their locally installed executables
 export PATH="/usr/local/nvim/bin:$PATH"                 # neovim executable path
