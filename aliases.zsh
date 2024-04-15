@@ -7,17 +7,34 @@ alias note="cd $HOME/Documents/Notes"
 # Upgrades system's packages while leaving the packages with alpha, beta, or rc upgrades left alone.
 alias system-upgrade="sudo nala update && sudo nala upgrade --no-update \$(apt-get --just-print dist-upgrade | grep 'Inst' | grep -E '\\(.*(alpha|a[0-9]|beta|b[0-9]|rc).*\\)' | cut -d' ' -f2 | xargs -I{} echo '--exclude {}')"
 
-# ls color
-alias ls='ls --color=auto'
+
+# ls alias for colorful lists
+if [ `uname -s` != "Darwin" ]; then
+  # In linux
+  alias ls='ls --color'
+fi
 
 # copy alias
-alias cft="xclip -selection clipboard"
+if [ `uname -s` = "Darwin" ]; then
+  # In MacOS
+  alias cft="pbcopy"
+else
+  # In linux
+  alias cft="xclip -selection clipboard"
+fi
 
 # Fix copy buffer issue
-alias fix-copy="sudo sysctl vm.dirty_bytes=100000000"
+if [ `uname -s` != "Darwin" ]; then
+  # In linux
+  alias fix-copy="sudo sysctl vm.dirty_bytes=100000000"
+fi
+
 
 # open :)
-alias open="xdg-open"
+if [ `uname -s` != "Darwin" ]; then
+  # In linux
+  alias open="xdg-open"
+fi
 
 # ExpressVPN
 alias vpn-on="expressvpn connect"
@@ -51,7 +68,7 @@ hatch-activate() {
         echo "Error: Too many arguments. You can only pass the name of a single hatch environment."
         return 1
     fi
-    
+
     local hatch_env=$1
 
     if [[ -z "$1" ]]; then
