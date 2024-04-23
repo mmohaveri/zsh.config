@@ -17,7 +17,7 @@ export PATH="$HOME/.cargo/bin:$PATH"                    # Rust executable path
 export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"       # Go executable paths
 export PATH="/usr/local/lua-language-server/bin:$PATH"  # lua-language-server executable path
 export PATH="/usr/local/ltex-ls/bin:$PATH"              # LaTeX Language Server executable path
-export PATH="/opt/homebrew/bin/:$PATH"			# HomeBrew path in MacOS
+export PATH="/opt/homebrew/bin/:$PATH"			        # HomeBrew path in MacOS
 
 # ====================== ZSH History Settings ==================
 export HISTFILE=$ZSH/zsh_history
