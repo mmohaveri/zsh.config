@@ -1,9 +1,11 @@
 fpath+=$ZSH_COMPLETIONS
-autoload -U compaudit compinit && compinit
+autoload -U compaudit compinit
 
 # Enable menu for auto completion (for completions with 2 options or more)
 zstyle ':completion:*' menu select
 # zstyle ':completion:*' menu select=long
+
+zmodload zsh/complist
 
 # Specify completer functions
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -59,3 +61,5 @@ zstyle ':completion:*' verbose true
 setopt ALWAYS_TO_END                    # Always move the cursor to the end after a completion has been performed
 # setopt LIST_PACKED                    # Try to pack the completion list in fewer lines
 setopt AUTO_CD                          # `cd` into a directory if the command issued does not exist but a directory with the same name does.
+
+compinit
