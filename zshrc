@@ -9,7 +9,6 @@ export GOPATH="$HOME/go"
 
 export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
-
 # ====================== Path Additions ==================
 export PATH="$HOME/.local/bin:$PATH"                    # Path where npx & pipx install their locally installed executables
 export PATH="/usr/local/nvim/bin:$PATH"                 # neovim executable path
@@ -43,6 +42,8 @@ plugins=(
     "zsh-history-substring-search"
     "hatch"
     "rust"
+    "brew"
+    "podman"
     "man-pages-color"
 )
 
@@ -92,6 +93,10 @@ else
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
+
+# ===================== Load AWS Plugin ===========================
+# It needs to run last or the complete command will not be found!
+source $ZSH_PLUGINS/aws/aws.plugin.zsh
 
 # ===================== CUDA settings ===========================
 # export PATH="/usr/local/cuda-11.0/bin:$PATH"

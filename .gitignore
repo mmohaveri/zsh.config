@@ -5,4 +5,4 @@ zsh_history
 completions/_cargo
 completions/_hatch
 completions/_rustup
-
+completions/_podman
