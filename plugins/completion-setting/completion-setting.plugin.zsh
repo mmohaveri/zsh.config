@@ -8,7 +8,8 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 
 # Specify completer functions
-zstyle ':completion:*' completer _expand _complete _correct _approximate
+# zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' completer _expand _complete _match _files _correct _approximate
 
 # Colorful completeions
 if [ `uname -s` = "Darwin" ]; then
