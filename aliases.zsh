@@ -8,31 +8,29 @@ alias note="cd $HOME/Documents/Notes"
 alias system-upgrade="sudo nala update && sudo nala upgrade --no-update \$(apt-get --just-print dist-upgrade | grep 'Inst' | grep -E '\\(.*(alpha|a[0-9]|beta|b[0-9]|rc).*\\)' | cut -d' ' -f2 | xargs -I{} echo '--exclude {}')"
 
 
-# ls alias for colorful lists
-if [ `uname -s` != "Darwin" ]; then
-  # In linux
+# ls alias for colorful lists in linux
+if [ `uname -s` = "Linux" ]; then
   alias ls='ls --color'
 fi
 
 # copy alias
-if [ `uname -s` = "Darwin" ]; then
-  # In MacOS
+if [ `uname -s` = "Linux" ]; then
+  alias cft="xclip -selection clipboard"
+elif [ `uname -s` = "Darwin" ]; then
   alias cft="pbcopy"
 else
-  # In linux
-  alias cft="xclip -selection clipboard"
+  echo "Unknown uname '`uname -s`', did not register a copy from terminal alias"
 fi
 
 # Fix copy buffer issue
-if [ `uname -s` != "Darwin" ]; then
+if [ `uname -s` = "Linux" ]; then
   # In linux
   alias fix-copy="sudo sysctl vm.dirty_bytes=100000000"
 fi
 
 
 # open :)
-if [ `uname -s` != "Darwin" ]; then
-  # In linux
+if [ `uname -s` = "Linux" ]; then
   alias open="xdg-open"
 fi
 
