@@ -3,10 +3,10 @@
 bindkey -v
 export KEYTIMEOUT=1
 
-bindkey "^L" forward-word
-bindkey "^H" backward-word
-bindkey "^K" history-substring-search-up
-bindkey "^J" history-substring-search-down
+bindkey "^[^L" forward-word
+bindkey "^[^H" backward-word
+bindkey "^[^K" history-substring-search-up
+bindkey "^[^J" history-substring-search-down
 
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
