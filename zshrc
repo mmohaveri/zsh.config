@@ -40,10 +40,6 @@ plugins=(
     "zsh-autosuggestions"               # This plugin can not be sourced more than once, so you won't be able to source .zshrc
     "zsh-manydots-magic"
     "zsh-history-substring-search"
-    "hatch"
-    "rust"
-    "brew"
-    "podman"
     "man-pages-color"
 )
 
@@ -51,9 +47,33 @@ for plugin in "${plugins[@]}"; do
     source $ZSH_PLUGINS/$plugin/$plugin.plugin.zsh
 done
 
-# ===================== Load key bindings and aliases ==========
-source $ZSH/aliases.zsh
-source $ZSH/key-bindings.zsh
+
+# ===================== Python virtualenvs settings =============
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_LINK_PATH=`which virtualenvwrapper.sh`
+export VIRTUALENVWRAPPER_REAL_PATH=`readlink -f $VIRTUALENVWRAPPER_LINK_PATH`
+export VIRTUALENVWRAPPER_PYTHON="$(dirname $VIRTUALENVWRAPPER_REAL_PATH)/python"
+source virtualenvwrapper.sh
+
+# ===================== NVM settings ============================
+export NVM_DIR="$HOME/.nvm"
+
+if [ "`uname -s`" = "Darwin" ]; then
+  source "/opt/homebrew/opt/nvm/nvm.sh"
+else
+  source "$NVM_DIR/nvm.sh"
+fi
+
+# ===================== CUDA settings ===========================
+# export PATH="/usr/local/cuda-11.0/bin:$PATH"
+# export LD_LIBRARY_PATH="/usr/local/cuda-11.0/lib64:$LD_LIBRARY_PATH"
+
+# ===================== Tex Live settings =======================
+# export PATH="/usr/local/texlive/2020/bin/x86_64-linux:$PATH"
+
+# ===================== kubectl settings ========================
+# alias k="kubectl"
+# export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # ===================== load prompt ============================
 SPACESHIP_PROMPT_ORDER=(
@@ -76,35 +96,7 @@ SPACESHIP_CHAR_SUFFIX=" "
 
 source $ZSH_PROMPTS/spaceship/spaceship.zsh
 
-# ===================== Python virtualenvs settings =============
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_LINK_PATH=`which virtualenvwrapper.sh`
-export VIRTUALENVWRAPPER_REAL_PATH=`readlink -f $VIRTUALENVWRAPPER_LINK_PATH`
-export VIRTUALENVWRAPPER_PYTHON="$(dirname $VIRTUALENVWRAPPER_REAL_PATH)/python"
-source virtualenvwrapper.sh
-
-# ===================== NVM settings ============================
-export NVM_DIR="$HOME/.nvm"
-
-if [ "`uname -s`" = "Darwin" ]; then
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_complet
-else
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
-
-# ===================== Load AWS Plugin ===========================
-# It needs to run last or the complete command will not be found!
-source $ZSH_PLUGINS/aws/aws.plugin.zsh
-
-# ===================== CUDA settings ===========================
-# export PATH="/usr/local/cuda-11.0/bin:$PATH"
-# export LD_LIBRARY_PATH="/usr/local/cuda-11.0/lib64:$LD_LIBRARY_PATH"
-
-# ===================== Tex Live settings =======================
-# export PATH="/usr/local/texlive/2020/bin/x86_64-linux:$PATH"
-
-# ===================== kubectl settings ========================
-# alias k="kubectl"
-# export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+# ===================== Load aliases, key bindings, completions ==========
+source $ZSH/aliases.zsh
+source $ZSH/key-bindings.zsh
+source $ZSH/completions.zsh
