@@ -2,13 +2,14 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
 export ZSH=$XDG_CONFIG_HOME/zsh
 export ZSH_PLUGINS=$ZSH/plugins
 export ZSH_PROMPTS=$ZSH/prompts
-export ZSH_COMPLETIONS=$ZSH/completions
+export ZSH_COMPLETION_FUNCTIONS=$ZSH/completion_functions
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
 export GOPATH="$HOME/go"
 
 export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
+
 # ====================== Path Additions ==================
 export PATH="$HOME/.local/bin:$PATH"                    # Path where npx & pipx install their locally installed executables
 export PATH="/usr/local/nvim/bin:$PATH"                 # neovim executable path
@@ -35,7 +36,6 @@ setopt HIST_IGNORE_SPACE                # Don't record an entry starting with a 
 # ===================== Load Plugins ===========================
 plugins=(
     "completion-setting"
-    "zsh-completions"
     "fast-syntax-highlighting"
     "zsh-autosuggestions"               # This plugin can not be sourced more than once, so you won't be able to source .zshrc
     "zsh-manydots-magic"

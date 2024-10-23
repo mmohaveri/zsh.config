@@ -2,7 +2,8 @@ zsh_history
 
 
 # Auto-generated completion files
-completions/_cargo
-completions/_hatch
-completions/_rustup
-completions/_podman
+completion_functions/_cargo
+completion_functions/_hatch
+completion_functions/_rustup
+completion_functions/_podman
+completion_functions/_kubectl
