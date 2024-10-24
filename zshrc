@@ -1,3 +1,5 @@
+start_time=$(date +%s%N)
+
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
 export ZSH=$XDG_CONFIG_HOME/zsh
 export ZSH_PLUGINS=$ZSH/plugins
@@ -100,3 +102,8 @@ source $ZSH_PROMPTS/spaceship/spaceship.zsh
 source $ZSH/aliases.zsh
 source $ZSH/key-bindings.zsh
 source $ZSH/completions.zsh
+
+end_time=$(date +%s%N)
+exec_time_in_ms=$((($end_time - $start_time) / 1000000))
+
+flock $ZSH/.zsh_load_time.lock -c "echo $exec_time_in_ms >> $ZSH/zsh_load_time.txt"

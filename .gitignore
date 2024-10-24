@@ -1,5 +1,6 @@
 zsh_history
-
+zsh_load_time.txt
+.zsh_load_time.lock
 
 # Auto-generated completion files
 completion_functions/_cargo
