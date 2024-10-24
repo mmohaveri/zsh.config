@@ -1,9 +1,11 @@
 # ===================== Python virtualenvs settings =============
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_LINK_PATH=`which virtualenvwrapper.sh`
-export VIRTUALENVWRAPPER_REAL_PATH=`readlink -f $VIRTUALENVWRAPPER_LINK_PATH`
-export VIRTUALENVWRAPPER_PYTHON="$(dirname $VIRTUALENVWRAPPER_REAL_PATH)/python"
-source virtualenvwrapper.sh
+activate-venv() {
+    export WORKON_HOME=$HOME/.virtualenvs
+    export VIRTUALENVWRAPPER_LINK_PATH=`which virtualenvwrapper.sh`
+    export VIRTUALENVWRAPPER_REAL_PATH=`readlink -f $VIRTUALENVWRAPPER_LINK_PATH`
+    export VIRTUALENVWRAPPER_PYTHON="$(dirname $VIRTUALENVWRAPPER_REAL_PATH)/python"
+    source virtualenvwrapper.sh
+}
 
 # ===================== Alias to open ipython in virtualenv =====
 alias ipy="python -c 'import IPython;
@@ -43,11 +45,13 @@ hatch-activate() {
 # # ===================== NVM settings ============================
 export NVM_DIR="$HOME/.nvm"
 
-if [ "`uname -s`" = "Darwin" ]; then
-  source "/opt/homebrew/opt/nvm/nvm.sh"
-else
-  source "$NVM_DIR/nvm.sh"
-fi
+activate-nvm() {
+    if [ "`uname -s`" = "Darwin" ]; then
+      source "/opt/homebrew/opt/nvm/nvm.sh"
+    else
+      source "$NVM_DIR/nvm.sh"
+    fi
+}
 
 # ====================== AWS CLI settings =========================
 export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
