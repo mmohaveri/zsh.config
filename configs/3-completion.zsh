@@ -1,16 +1,39 @@
+# Add completion functions direcoties to the fpath
 fpath+=$ZSH_COMPLETION_FUNCTIONS
 fpath+=$ZSH/plugins/zsh-completions/src
 
-zmodload zsh/complist
+# Initialize the completion engine
 autoload -U compaudit compinit
 compinit
 compaudit
 
-# Enable menu for auto completion (for completions with 2 options or more)
+# Enable menu for completions
+zmodload zsh/complist
 zstyle ':completion:*' menu select
 
+# Try to pack the completion list in fewer lines
+setopt LIST_PACKED
+
+# setopt GLOB_COMPLETE      # Show autocompletion menu with globs
+setopt MENU_COMPLETE        # Automatically highlight first element of completion menu
+setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
+setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
+setopt ALWAYS_TO_END        # Always move the cursor to the end after a completion has been performed
+
+# Show hidden files in completion results
+# _comp_options+=(globdots)
+
 # Specify completer functions
-zstyle ':completion:*' completer _complete _arguments _files _correct _approximate _match _expand
+zstyle ':completion:*' completer _extensions _expand_alias _complete _approximate
+# zstyle ':completion:*' completer _complete _arguments _files _correct _approximate _match _expand
+
+# Setup completion cache
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$ZSH/.zcompcache"
+
+# Have more verbose completions
+zstyle ':completion:*' verbose true
+
 
 # Colorful completeions
 if [ `uname -s` = "Darwin" ]; then
@@ -57,9 +80,4 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:
 # Prevent the use of compctl
 zstyle ':completion:*' use-compctl false
 
-# Have more verbose completions
-zstyle ':completion:*' verbose true
-
-setopt ALWAYS_TO_END                    # Always move the cursor to the end after a completion has been performed
-setopt LIST_PACKED                    # Try to pack the completion list in fewer lines
 setopt AUTO_CD                          # `cd` into a directory if the command issued does not exist but a directory with the same name does.
