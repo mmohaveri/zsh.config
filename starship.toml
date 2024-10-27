@@ -1,0 +1,135 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = '''
+[┌──](bold green)$sudo$git_branch$git_state$git_status$shell$os$jobs$golang$lua$nodejs$python$rust$terraform$package$memory_usage$cmd_duration
+[│](bold green)$directory$status$character'''
+
+scan_timeout = 50     # 10ms timeout for starship to scan files in the current directory
+command_timeout = 500 # 500ms timeout for commands executed by starship
+add_newline = false   # Do not inserts a blank line between shell prompts
+# palette = 'foo'
+
+# # Set 'foo' as custom color palette
+#
+# # Define custom colors
+# [palettes.foo]
+# # Overwrite existing color
+# blue = '21'
+# # Define new color
+# mustard = '#af8700'
+
+[directory]
+truncation_length = 4
+truncation_symbol = "…/"
+
+[status]
+disabled = false
+map_symbol = true
+pipestatus = true
+format = "[$symbol$signal_name$maybe_int]($style)"
+pipestatus_format = "\\[$pipestatus\\]=>[$symbol$signal_name$maybe_int]($style)"
+pipestatus_segment_format = "[$symbol$maybe_int]($style)"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+vimcmd_replace_one_symbol = "[❮](bold purple)"
+vimcmd_replace_symbol = "[❮](bold purple)"
+vimcmd_visual_symbol = "[❮](bold yellow)"
+
+
+[sudo]
+disabled = false
+format = "[$symbol]($style)"
+symbol = "🧙"
+
+[git_branch]
+format = " [$symbol](bold red)[$branch(:$remote_branch)]($style) "
+
+[git_state]
+format = "[\\($state( $progress_current/$progress_total)\\)]($style)"
+
+[git_status]
+format = "([\\[$all_status$ahead_behind\\]]($style))"
+conflicted = "✘"
+ahead = "⇡"
+behind = "⇣"
+diverged = "󱡷"
+up_to_date = ""
+untracked = ""
+stashed = ""
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = ""
+typechanged = ""
+
+[shell]
+disabled = false
+format = "[\\[$indicator](style) "
+
+[os]
+disabled = false
+format = "[on $symbol$name $codename\\]]($style)"
+[os.symbols]
+Debian = "🌀"
+# Debian = ""
+
+[jobs]
+format = "[\\[$number job\\]]($style)"
+symbol_threshold = 1
+number_threshold = 1
+
+[golang]
+format = "[\\[$symbol$version\\]]($style)"
+version_format = "v$major.$minor"
+symbol = "🐹"
+# symbol = ""
+# symbol = "󰟓"
+
+[lua]
+format = "[\\[$symbol$version\\]]($style)"
+version_format = "v$major.$minor"
+symbol = "🌙"
+# symbol = ""
+
+[nodejs]
+format = "[\\[$symbol$version\\]]($style)"
+version_format = "v$major.$minor"
+symbol = ""
+# symbol = ""
+
+[python]
+format = "[\\[$symbol$pyenv_prefix($version)( \\($virtualenv\\))\\]]($style)"
+version_format = "v$major.$minor"
+symbol = "🐍"
+# symbol = ""
+
+[rust]
+format = "[\\[$symbol$version\\]]($style)"
+version_format = "v$major.$minor"
+symbol = "🦀"
+# symbol = ""
+
+[terraform]
+format = "[\\[$symbol$workspace$version\\]]($style)"
+version_format = "v$major.$minor"
+symbol = "💠"
+# symbol = "󱁢"
+
+[package]
+format = "[\\[$symbol$version\\]]($style)"
+version_format = "v$major.$minor.$patch"
+symbol = "📦"
+
+[memory_usage]
+disabled = false
+threshold = 0
+format = "\\[$symbol[$ram_pct(|$swap_pct)]($style)\\]"
+symbol = "🐏"
+# symbol = "󰍛"
+
+[cmd_duration]
+format = "[\\[🕰️$duration\\]]($style)"
+show_milliseconds = true
