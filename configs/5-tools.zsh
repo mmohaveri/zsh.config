@@ -1,5 +1,5 @@
 # ===================== Python virtualenvs settings =============
-activate-venv() {
+venv-activate() {
     export WORKON_HOME=$HOME/.virtualenvs
     export VIRTUALENVWRAPPER_LINK_PATH=`which virtualenvwrapper.sh`
     export VIRTUALENVWRAPPER_REAL_PATH=`readlink -f $VIRTUALENVWRAPPER_LINK_PATH`
@@ -46,7 +46,7 @@ hatch-activate() {
 # # ===================== NVM settings ============================
 export NVM_DIR="$HOME/.nvm"
 
-activate-nvm() {
+nvm-activate() {
     if [ "`uname -s`" = "Darwin" ]; then
       source "/opt/homebrew/opt/nvm/nvm.sh"
     else
