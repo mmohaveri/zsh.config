@@ -5,6 +5,7 @@ activate-venv() {
     export VIRTUALENVWRAPPER_REAL_PATH=`readlink -f $VIRTUALENVWRAPPER_LINK_PATH`
     export VIRTUALENVWRAPPER_PYTHON="$(dirname $VIRTUALENVWRAPPER_REAL_PATH)/python"
     source virtualenvwrapper.sh
+    compdef '_files -W $WORKON_HOME -/ -S "" -F "*/*"' workon
 }
 
 # ===================== Alias to open ipython in virtualenv =====
