@@ -67,11 +67,11 @@ typechanged = ""
 
 [shell]
 disabled = false
-format = "[\\[$indicator](style) "
+format = "[\\[$indicator]($style) "
 
 [os]
 disabled = false
-format = "[on ]($style)[$symbol](red)[$name $codename\\]]($style)"
+format = "[on [$symbol](red)$name $codename\\]]($style)"
 [os.symbols]
 Debian = " "
 # Debian = "🌀"
@@ -126,7 +126,7 @@ symbol = "📦"
 [memory_usage]
 disabled = false
 threshold = 0
-format = "\\[$symbol[$ram_pct(|$swap_pct)]($style)\\]"
+format = "[\\[[$symbol](green)$ram_pct(|[ ](green)$swap_pct)\\]]($style)"
 symbol = "󰍛 "
 
 [cmd_duration]
