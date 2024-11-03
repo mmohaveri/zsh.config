@@ -29,6 +29,9 @@ function update-completions {
     else
         source $NVM_DIR/bash_completion
     fi
+
+    # HetznerCloud
+    hcloud completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_hcloud
 }
 
 setopt LOCAL_OPTIONS NO_MONITOR

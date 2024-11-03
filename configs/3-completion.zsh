@@ -7,6 +7,14 @@ autoload -U compaudit compinit
 compinit
 compaudit
 
+# Initialize bash compatible completion engine for Abnormal completions
+autoload -U +X bashcompinit
+bashcompinit
+
+# Abnormal completions
+complete -C `which aws_completer` aws
+complete -C `which terraform` -o nospace terraform
+
 # Enable menu for completions
 zmodload zsh/complist
 zstyle ':completion:*' menu select
