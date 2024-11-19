@@ -1,6 +1,6 @@
 # ===================== Python virtualenvs settings =============
 venv-activate() {
-    export WORKON_HOME=$HOME/.virtualenvs
+    export WORKON_HOME=$VIRTUAL_ENV_HOME
     export VIRTUALENVWRAPPER_LINK_PATH=`which virtualenvwrapper.sh`
     export VIRTUALENVWRAPPER_REAL_PATH=`readlink -f $VIRTUALENVWRAPPER_LINK_PATH`
     export VIRTUALENVWRAPPER_PYTHON="$(dirname $VIRTUALENVWRAPPER_REAL_PATH)/python"

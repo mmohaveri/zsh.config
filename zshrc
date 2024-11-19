@@ -1,12 +1,14 @@
 start_time=$(date +%s%N)
 
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
+export XDG_DATA_HOME=${XDG_DATA_HOME:=$HOME/.local/share}
 export ZSH=$XDG_CONFIG_HOME/zsh
 export ZSH_COMPLETION_FUNCTIONS=$ZSH/completion_functions
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
 export VISUAL='nvim'
 export GOPATH="$HOME/go"
+export VIRTUAL_ENV_HOME=$XDG_DATA_HOME/virtualenvs
 
 export PATH="$HOME/.local/bin:$PATH"                    # Path where npx & pipx install their locally installed executables
 export PATH="$HOME/.cargo/bin:$PATH"                    # Rust executable path
