@@ -75,6 +75,7 @@ format = "[on [$symbol](red)$name $codename\\]]($style)"
 [os.symbols]
 Debian = " "
 # Debian = "🌀"
+Ubuntu = "󰕈 "
 
 [jobs]
 format = "[\\[$number job\\]]($style)"
