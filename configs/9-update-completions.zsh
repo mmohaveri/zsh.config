@@ -3,23 +3,33 @@ function update-completions {
     # complete -C `which aws_completer` aws
 
     # Hatch
-    _HATCH_COMPLETE=zsh_source hatch >| $ZSH_COMPLETION_FUNCTIONS/_hatch
+    if which hatch > /dev/null 2>&1; then
+        _HATCH_COMPLETE=zsh_source hatch >| $ZSH_COMPLETION_FUNCTIONS/_hatch
+    fi
 
     # Podman
-    podman completion zsh -f "${ZSH_COMPLETION_FUNCTIONS}/_podman"
+    if which podman > /dev/null 2>&1; then
+        podman completion zsh -f "${ZSH_COMPLETION_FUNCTIONS}/_podman"
+    fi
 
     # Poetry (desabled)
-    # poetry completions zsh >| "${ZSH_COMPLETION_FUNCTIONS}/_poetry" &|
+    if which poetry > /dev/null 2>&1; then
+        poetry completions zsh >| "${ZSH_COMPLETION_FUNCTIONS}/_poetry" &|
+    fi
 
     # Rust (rustup & cargo)
-    rustup completions zsh >| "$ZSH_COMPLETION_FUNCTIONS/_rustup" &|
-    cp "$(rustc +${${(z)$(rustup default)}[1]} --print sysroot)"/share/zsh/site-functions/_cargo $ZSH_COMPLETION_FUNCTIONS/_cargo
+    if which rustup > /dev/null 2>&1; then
+        rustup completions zsh >| "$ZSH_COMPLETION_FUNCTIONS/_rustup" &|
+        cp "$(rustc +${${(z)$(rustup default)}[1]} --print sysroot)"/share/zsh/site-functions/_cargo $ZSH_COMPLETION_FUNCTIONS/_cargo
+    fi
 
     # Kubectl
-    kubectl completion zsh >| ${ZSH_COMPLETION_FUNCTIONS}/_kubectl
+    if which kubectl > /dev/null 2>&1; then
+        kubectl completion zsh >| ${ZSH_COMPLETION_FUNCTIONS}/_kubectl
+    fi
 
-    # Brew (only on MacOS)
-    if [ `uname -s` = "Darwin" ] && [ which brew > /dev/null 2>&1 ]; then
+    # Brew
+    if which brew > /dev/null 2>&1; then
         FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
     fi
 
@@ -30,8 +40,10 @@ function update-completions {
         source $NVM_DIR/bash_completion
     fi
 
-    # HetznerCloud
-    hcloud completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_hcloud
+    # HetznerCloud CLI
+    if which hcloud > /dev/null 2>&1; then
+        hcloud completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_hcloud
+    fi
 }
 
 setopt LOCAL_OPTIONS NO_MONITOR
