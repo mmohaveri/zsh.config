@@ -58,6 +58,9 @@ v() {
     nvim $path_to_open
 }
 
+# bat
+alias bat='batcat'
+
 # git aliases
 alias ga='git add'
 alias gb='git branch'
