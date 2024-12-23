@@ -2,7 +2,6 @@
 plugins=(
     "zsh-autosuggestions"               # This plugin can not be sourced more than once, so you won't be able to source .zshrc
     "zsh-manydots-magic"
-    "man-pages-color"
     "fast-syntax-highlighting"
 )
 
