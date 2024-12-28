@@ -11,4 +11,4 @@ completion_functions/_kubectl
 completion_functions/_podman
 completion_functions/_rustup
 
-/configs/10-local-aliases.zsh
+/configs/0100-local-settings.zsh
