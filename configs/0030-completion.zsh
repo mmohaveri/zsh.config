@@ -88,4 +88,3 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:
 # Prevent the use of compctl
 zstyle ':completion:*' use-compctl false
 
-setopt AUTO_CD                          # `cd` into a directory if the command issued does not exist but a directory with the same name does.
