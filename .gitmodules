@@ -16,3 +16,6 @@
 [submodule "plugins/zsh-history-substring-search"]
 	path = plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule "plugins/fzf-tab"]
+	path = plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

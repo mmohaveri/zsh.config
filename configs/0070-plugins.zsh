@@ -1,5 +1,9 @@
 # ===================== Load Plugins ===========================
 plugins=(
+    # NOTE: fzf-tab needs to be loaded after compinit module,
+    # but before plugins which will wrap widgets.
+    # e.g: zsh-autosuggestions or fast-syntax-highlighting
+    "fzf-tab"
     # NOTE: zsh-autosuggestions CAN NOT be sourced more than once,
     # so you won't be able to re-source .zshrc
     "zsh-autosuggestions"
