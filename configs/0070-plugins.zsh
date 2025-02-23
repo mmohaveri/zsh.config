@@ -8,6 +8,8 @@ plugins=(
     # so you won't be able to re-source .zshrc
     "zsh-autosuggestions"
     "zsh-manydots-magic"
+    # NOTE: "fast-syntax-highlighting" CAN NOT be sourced more than once,
+    # so you won't be able to re-source .zshrc
     "fast-syntax-highlighting"
 )
 
