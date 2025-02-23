@@ -4,6 +4,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
 export XDG_DATA_HOME=${XDG_DATA_HOME:=$HOME/.local/share}
 export ZSH=$XDG_CONFIG_HOME/zsh
 export ZSH_COMPLETION_FUNCTIONS=$ZSH/completion_functions
+export ZSH_GEN_COMPLETION_FUNCTIONS=$ZSH/auto_generated_completion_functions
 export ZSH_SCRIPTS=$ZSH/scripts
 export LANG=en_US.UTF-8
 

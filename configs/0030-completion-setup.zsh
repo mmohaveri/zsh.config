@@ -1,5 +1,6 @@
 # Add completion functions direcoties to the fpath
 fpath+=$ZSH_COMPLETION_FUNCTIONS
+fpath+=$ZSH_GEN_COMPLETION_FUNCTIONS
 fpath+=$ZSH/plugins/zsh-completions/src
 
 # Initialize the completion engine

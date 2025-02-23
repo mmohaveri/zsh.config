@@ -3,15 +3,5 @@ zsh_load_time.txt
 .zsh_load_time.lock
 .zcompcache
 
-# Auto-generated completion files
-completion_functions/_cargo
-completion_functions/_hatch
-completion_functions/_hcloud
-completion_functions/_kubectl
-completion_functions/_podman
-completion_functions/_rustup
-completion_functions/_uv
-completion_functions/_uvx
-completion_functions/_fga
-
+/auto_generated_completion_functions/*
 /configs/0100-local-settings.zsh

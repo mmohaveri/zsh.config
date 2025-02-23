@@ -4,28 +4,28 @@ function update-completions {
 
     # Hatch
     if which hatch > /dev/null 2>&1; then
-        _HATCH_COMPLETE=zsh_source hatch >| $ZSH_COMPLETION_FUNCTIONS/_hatch
+        _HATCH_COMPLETE=zsh_source hatch >| $ZSH_GEN_COMPLETION_FUNCTIONS/_hatch
     fi
 
     # Podman
     if which podman > /dev/null 2>&1; then
-        podman completion zsh -f "${ZSH_COMPLETION_FUNCTIONS}/_podman"
+        podman completion zsh -f "${ZSH_GEN_COMPLETION_FUNCTIONS}/_podman"
     fi
 
     # Poetry (desabled)
     if which poetry > /dev/null 2>&1; then
-        poetry completions zsh >| "${ZSH_COMPLETION_FUNCTIONS}/_poetry" &|
+        poetry completions zsh >| "${ZSH_GEN_COMPLETION_FUNCTIONS}/_poetry" &|
     fi
 
     # Rust (rustup & cargo)
     if which rustup > /dev/null 2>&1; then
-        rustup completions zsh >| "$ZSH_COMPLETION_FUNCTIONS/_rustup" &|
-        cp "$(rustc +${${(z)$(rustup default)}[1]} --print sysroot)"/share/zsh/site-functions/_cargo $ZSH_COMPLETION_FUNCTIONS/_cargo
+        rustup completions zsh >| "$ZSH_GEN_COMPLETION_FUNCTIONS/_rustup" &|
+        cp "$(rustc +${${(z)$(rustup default)}[1]} --print sysroot)"/share/zsh/site-functions/_cargo $ZSH_GEN_COMPLETION_FUNCTIONS/_cargo
     fi
 
     # Kubectl
     if which kubectl > /dev/null 2>&1; then
-        kubectl completion zsh >| ${ZSH_COMPLETION_FUNCTIONS}/_kubectl
+        kubectl completion zsh >| ${ZSH_GEN_COMPLETION_FUNCTIONS}/_kubectl
     fi
 
     # Brew
@@ -42,22 +42,22 @@ function update-completions {
 
     # HetznerCloud CLI
     if which hcloud > /dev/null 2>&1; then
-        hcloud completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_hcloud
+        hcloud completion zsh > ${ZSH_GEN_COMPLETION_FUNCTIONS}/_hcloud
     fi
 
     # OpenFGA client
     if which fga > /dev/null 2>&1; then
-        fga completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_fga
+        fga completion zsh > ${ZSH_GEN_COMPLETION_FUNCTIONS}/_fga
     fi
 
     # UV
     if which uv > /dev/null 2>&1; then
-        uv --generate-shell-completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_uv
+        uv --generate-shell-completion zsh > ${ZSH_GEN_COMPLETION_FUNCTIONS}/_uv
     fi
 
     # UVX
     if which uvx > /dev/null 2>&1; then
-        uvx --generate-shell-completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_uvx
+        uvx --generate-shell-completion zsh > ${ZSH_GEN_COMPLETION_FUNCTIONS}/_uvx
     fi
 }
 
