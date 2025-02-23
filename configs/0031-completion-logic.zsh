@@ -12,11 +12,13 @@ zstyle ':completion:*' completer _extensions _expand_alias _complete _approximat
 # Add automatic description to completions without a description if possible
 zstyle ':completion:*' auto-description 'specify: %d'
 
+# NOTE: will not effect fzf-tab
 # Disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
+# zstyle ':completion:*:git-checkout:*' sort false
 
+# NOTE: will not effect fzf-tab
 # Group completions by tag if completion list contains more than a single tag.
-zstyle ':completion:*' group-name ''
+# zstyle ':completion:*' group-name ''
 
 # Enable mixed case and case insensitive matches
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
