@@ -22,7 +22,8 @@ export PATH="/usr/local/nvim/bin:$PATH"                 # neovim executable path
 export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"       # Go executable paths
 export PATH="/usr/local/ltex-ls/bin:$PATH"              # LaTeX Language Server executable path
 export PATH="/usr/local/lua-language-server/bin:$PATH"  # lua-language-server executable path
-
+export PATH="/usr/local/ollama/bin:$PATH"               # ollama executable path
+export PATH="/usr/local/kreya:$PATH"                    # kreya executable path
 
 for config_file in $(ls -1v $ZSH/configs/*); do
     source "$config_file"
