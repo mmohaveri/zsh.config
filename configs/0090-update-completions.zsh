@@ -44,6 +44,21 @@ function update-completions {
     if which hcloud > /dev/null 2>&1; then
         hcloud completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_hcloud
     fi
+
+    # OpenFGA client
+    if which fga > /dev/null 2>&1; then
+        fga completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_fga
+    fi
+
+    # UV
+    if which uv > /dev/null 2>&1; then
+        uv --generate-shell-completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_uv
+    fi
+
+    # UVX
+    if which uvx > /dev/null 2>&1; then
+        uvx --generate-shell-completion zsh > ${ZSH_COMPLETION_FUNCTIONS}/_uvx
+    fi
 }
 
 setopt LOCAL_OPTIONS NO_MONITOR

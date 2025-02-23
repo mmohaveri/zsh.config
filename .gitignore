@@ -10,5 +10,8 @@ completion_functions/_hcloud
 completion_functions/_kubectl
 completion_functions/_podman
 completion_functions/_rustup
+completion_functions/_uv
+completion_functions/_uvx
+completion_functions/_fga
 
 /configs/0100-local-settings.zsh
