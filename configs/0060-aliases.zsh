@@ -58,6 +58,24 @@ v() {
     nvim $path_to_open
 }
 
+# load env file, if no file is provided, .env file will be loaded
+load_env() {
+     if [[ $# -gt 1 ]]; then
+        echo "Error: Too many arguments. You can only pass the name of a single file or directory."
+        return 1
+    fi
+
+    local env_file=$1
+
+    if [[ -z "$1" ]]; then
+        env_file=".env"
+    fi
+
+    set -a
+    source $env_file
+    set +a
+}
+
 # bat
 alias bat='batcat'
 
