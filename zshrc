@@ -15,6 +15,8 @@ export VISUAL='nvim'
 export GOPATH="$HOME/go"
 export VIRTUAL_ENV_HOME=$XDG_DATA_HOME/virtualenvs
 
+export XDG_DATA_DIRS="/usr/local/nvim/share:$XDG_DATA_DIRS"
+
 export PATH="$ZSH/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"                    # Path where npx & pipx install their locally installed executables
 export PATH="$HOME/.cargo/bin:$PATH"                    # Rust executable path
@@ -25,6 +27,7 @@ export PATH="/usr/local/ltex-ls/bin:$PATH"              # LaTeX Language Server 
 export PATH="/usr/local/lua-language-server/bin:$PATH"  # lua-language-server executable path
 export PATH="/usr/local/ollama/bin:$PATH"               # ollama executable path
 export PATH="/usr/local/kreya:$PATH"                    # kreya executable path
+export PATH="/usr/local/buf/bin:$PATH"                  # buf executable path
 
 for config_file in $(ls -1v $ZSH/configs/*); do
     source "$config_file"
